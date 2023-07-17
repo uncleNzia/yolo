@@ -1,0 +1,37 @@
+version: '3'
+
+services:
+  clientapp:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: b6be929b2e95
+    container_name: clientapp
+    restart: unless-stopped
+
+    ports:
+      - "7000:8080"
+    volumes:
+      - .:/app
+      - node_modules:/home/node/app/node_modules
+    networks:
+      - app-network
+    
+
+  backendaapp:
+    image: b5024a56c31c
+    container_name: backendaapp
+    restart: unless-stopped
+    
+    volumes:     
+      - dbdata:/data/db
+    networks:
+      - app-network  
+
+networks:
+  app-network:
+    driver: bridge
+
+volumes:
+  dbdata:
+  node_modules:
