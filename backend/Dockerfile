@@ -2,11 +2,11 @@ FROM node:16-alpine3.16
 
 WORKDIR /app
 
-COPY ./package.json .
+COPY package.json ./
 
 RUN npm install
 
 COPY . .
-EXPOSE 3080
+EXPOSE 5000
 
 CMD [ "npm", "start"]

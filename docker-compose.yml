@@ -1,37 +1,43 @@
 version: '3'
 
 services:
-  clientapp:
-    build:
-      context: .
-      dockerfile: Dockerfile
-    image: b6be929b2e95
-    container_name: clientapp
-    restart: unless-stopped
+    frontend:
+      build: ./client
+      container_name: clientapp
+      ports:
+        - 3000:3000
+      networks:
+        - network-net
+      depends on:
+        - backend
 
-    ports:
-      - "7000:8080"
-    volumes:
-      - .:/app
-      - node_modules:/home/node/app/node_modules
+    backend:
+      build: ./backend
+      container_name: backend
+      ports:
+        - 5000:5000
+      networks:
+        - network-net
+      depends on:
+        - mongo
+
+
+    mongo:
+      container_name: mongo_container
+      image: mongo:latest
+      restart: always
+      volumes:
+        - ./data:/data/db
+      ports:
+        - 27017:27017
+      networks:
+        - network-net
+
     networks:
-      - app-network
-    
+      network-net:
+      driver: bridge
 
-  backendaapp:
-    image: b5024a56c31c
-    container_name: backendaapp
-    restart: unless-stopped
-    
-    volumes:     
-      - dbdata:/data/db
-    networks:
-      - app-network  
+  
 
-networks:
-  app-network:
-    driver: bridge
-
-volumes:
-  dbdata:
-  node_modules:
+      
+        
