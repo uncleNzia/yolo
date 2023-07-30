@@ -4,6 +4,6 @@
   become: yes
 
   roles: 
-   - git-clone
+   - clone-dependencies
    - client
    - backend
