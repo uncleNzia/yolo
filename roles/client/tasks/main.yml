@@ -1,0 +1,16 @@
+---
+- name: Install required packages
+ apt: 
+   name: 
+     -docker.io
+     -nodejs
+     -npm
+   state: present
+ -name  - name: Download and build Dockerimage for container for client
+  docker_image:
+    name: victornzia/clientapp:v1.0
+    state: present
+    state: present
+
+   
+    

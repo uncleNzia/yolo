@@ -1,0 +1,9 @@
+---
+- name: Cloning from github and deploying dockerized Nodejs app
+- hosts: all
+  become: yes
+
+  roles: 
+   - git-clone
+   - client
+   - backend

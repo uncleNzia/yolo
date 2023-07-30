@@ -1,0 +1,7 @@
+[client]
+client_server ansible_host=192.168.0.100
+
+[backend]
+backend_server ansible_host=192.168.0.101
+
+ansible_ssh_port=2222
