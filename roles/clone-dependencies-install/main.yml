@@ -1,0 +1,36 @@
+---
+- name: Install required packages
+block :
+  apt: 
+    name: "{{ software-packages }}"
+    state: present 
+  vars:
+    software: 
+     -nodejs
+     -python3
+     -python3-pip
+     -npm
+    
+  - name: Install git 
+  apt: 
+
+    name: git
+    state: present
+
+  - name: Cloning the repository
+  git:
+    repo: "{{ repo_url }}"
+    dest: "{{ dest_folder }}"
+
+ - name: Install Docker
+    apt:
+    name: docker.io
+    state: present
+            
+
+ - name: Install Docker Compose
+    apt:
+    name: docker-compose
+    state: present
+           
+

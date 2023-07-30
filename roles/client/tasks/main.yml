@@ -10,7 +10,9 @@
   docker_image:
     name: victornzia/clientapp:v1.0
     state: present
-    state: present
+  version: master  
+  register: git _checkout 
+  tag: git
 
    
     
