@@ -6,11 +6,11 @@
  3.Also used .dockerignore files to reduce size of the docker images 
 
 ### **Process of creating the Dockerfile**
- [a].defined alpine as my base image
- [b].created my working directory
- [c] copied the necessary package.json
- [d] installed depedencies
- [e] run npm command to start the application
+ 1.defined alpine as my base image
+ 2.created my working directory
+ 3.copied the necessary package.json
+ 4.installed depedencies
+ 5.run npm command to start the application
 
 ### Tagging and uploading to dockerhub 
  1. Pushed docker images to dockerhub and tagged them
